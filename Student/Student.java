@@ -7,34 +7,24 @@ public class Student{
        public  String name;
        public String city;
        public  int    age;
-		Student[] StudentList=new Student[5];
-		static byte studentCounter=0;
+	   
+	Student[] StudentList=new Student[5];
+	static byte studentCounter=0;
 		
+  	  
+	  public Student(){}
       
-	  
-	  
-	  
-	  
-      
-      public Student(String name,String city,int age){//êîíñòðóêòîð
-	    
+      public Student(String name,String city,int age){
+   
 		this.name=name;
 		this.city=city;
 		this.age=age;
-
-	}
-	
+}
 	
 
 //////////////PressEnyKey  -- ожидаем нажатие любой клавиши от пользователя
   public void PressEnyKey(){
 
-  //String str;
-  //      Scanner sc = new Scanner(System.in);
-  //      while (sc.hasNext("\n")){
-  //          str = sc.nextLine();
-  //      }
-   
     Scanner in = new Scanner(System.in);
           char c = in.next().charAt(0);
           
@@ -51,10 +41,11 @@ public class Student{
     } catch (IOException | InterruptedException ex) {}
   }
 
-////////////// Menu  -   âûâîäèì ìåíþ íà ýêðàí
+////////////// Menu  -   
     public void Menu(){
      
-      
+      ClearDisplay();
+	  
          System.out.println(" 1 : Add new Student ");
          System.out.println(" 2 : Delete Student");
          System.out.println(" 3 : Show all Students");
@@ -68,42 +59,41 @@ public class Student{
       Scanner scanName = new Scanner(System.in);
 	  Scanner scanCyti = new Scanner(System.in);
 	  Scanner scanAge = new Scanner(System.in);
-     
+      int age;
+	  String name;
+	  String city;
 	 
 	 System.out.println(" ---------------- Add new Student ----------------- ");
 	 System.out.println("Now count of student list is:"+studentCounter);
 	 
 	 
-	 if(studentCounter<StudentList.length){//если мы не достигли предела нашеко списка то добавляем нового студента
+	 if(studentCounter<StudentList.length){//если мы не достигли предела нашего списка то добавляем нового студента
 	 
-	 System.out.print("Enter  student name:");
+		 System.out.print("Enter  student name:");
+		 name = scanName.next();
+		 
+		 System.out.print("Enter city:");
+		 city=scanCyti.next();
+		 
+		 System.out.print("Enter age:");
+		 try{
+		 age=scanAge.nextInt();
+		 }
+		 catch(Exception e)
+		 {
+			 System.out.println("Error! Incorrect age... Please enter correct age data////");
+			// AddNewStudent();//вызываю рекурсивно функцию для повторного ввода 
+			return;
+		 }
 	 
-	 String name = scanName.next();
-	 
-	 System.out.print("Enter city:");
-	 String city=scanCyti.next();
-	 
-	 System.out.print("Enter age");
-	 try{
-	 int age=scanAge.nextInt();
-	 }
-	 catch(Exception e)
-	 {
-		 System.out.println("Error! Incorrect age... Please enter correct age data////");
-	     AddNewStudent();//вызываю рекурсивно функцию для повторного ввода 
-	 }
-	 
-	 StudentList[studentCounter]=new Student(name,city,age);
-	 System.out.println("# Student was added successfully!");
-	 //System.out.println( StudentList[studentCounter].name+" "+StudentList[studentCounter].city+" "+StudentList[studentCounter].age);
-	 
+		 StudentList[studentCounter]=new Student(name,city,age);
+		 System.out.println("# Student was added successfully!");
+		
 	 studentCounter++;//увеличиваем счетчик
 	 }
 	 else{
-		 
 		 System.out.println("Sorry :(   StudentList is Full!");
 	 }
-	 
 	  	 
  }
  
@@ -112,18 +102,11 @@ public class Student{
 	 
 	 System.out.println("------------Begin of StudentList---------------");
 	 
-	 for(int i=0;i<studentCounter;i++){
-		 System.out.println(i+":"+StudentList[i].name+"|"+StudentList[i].city+"|"+StudentList[i].age);
-				 
-	 }
-	  System.out.println("------------ End of StudentList---------------");
-	
-	//for(int i=0;i<StudentList.length;i++){
-		
-	//	System.out.println(i+":"+StudentList[i].name+StudentList[i].city+StudentList[i].age);
-	 		
-	//}
-	
+		 for(int i=0;i<studentCounter;i++){
+			 System.out.println(i+":"+StudentList[i].name+"|"+StudentList[i].city+"|"+StudentList[i].age+"|");
+					 
+		 }
+	 System.out.println("------------ End of StudentList---------------");
 	 
  }
 	
@@ -132,7 +115,7 @@ public class Student{
 		System.exit(0);
 	}
 	
-/////////////// SwitchMenu - îñóùåñòâëÿåì âûáîð ïóíêòà ìåíþ 
+/////////////// SwitchMenu - 
    public int SwitchMenu(int menuNumber){
 
     switch(menuNumber){
@@ -140,13 +123,12 @@ public class Student{
            
 		   AddNewStudent();
            break;
-           
 
 	 }
          case 2:{
            System.out.println("  Delete Student");
            break;
-           
+    
 	 }
          case 3:{
            ShowStudentList();
@@ -162,7 +144,6 @@ public class Student{
            System.out.println(" Exit");
 		   ExitMenu();
            break;
-            
            
 	 } 
         
@@ -205,9 +186,9 @@ return menuNumber;
 ////////////////////
 	public static void main (String[] args) {
 
-          Student s = new Student("John Rock","Arizona",38);
+          Student s = new Student();
           s.ShowMenu();
-	//System.out.println(s.name);
+	
 
  }
 
