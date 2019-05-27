@@ -8,13 +8,14 @@ public class Student{
        public String city;
        public  int    age;
 	   
-	Student[] StudentList=new Student[5];
-	static byte studentCounter=0;
+	 int lengthStudentList=5;	
+	 static byte studentCounter=0;
+	 Student[] StudentList=new Student[lengthStudentList];
+	
 		
   	  
-	  public Student(){}
-      
-      public Student(String name,String city,int age){
+	 public Student(){}
+     public Student(String name,String city,int age){
    
 		this.name=name;
 		this.city=city;
@@ -53,7 +54,125 @@ public class Student{
 	     System.out.println(" 5: Exit");
      }
     
-//////////////// 
+    //////////////////PressedKeyIsNumber //возвращает StudentNumber или -1 если это не число
+int PressedKeyIsNumber(char PressedKey){
+	
+	int StudentNumber;
+     	  
+		  if(Character.isDigit(PressedKey))
+		  {
+			 
+			  return StudentNumber=Character.getNumericValue(PressedKey); //берем числовое значение от Char 
+		  }  
+			else return -1;
+	  
+}
+		  
+	
+	
+    /////////////////delete directly
+	void DeleteStudentDirectly(int deletedStudentNumber){
+		
+		System.out.println("Executed DeleteStudentDirectly");
+		System.out.println("deletedStudentNumber:"+deletedStudentNumber);
+		
+		Student[] newStudentList=new Student[lengthStudentList];//выделяем память для массива в котором будем сохронять новый список студентов
+		//создали новый массив 
+		System.out.println("Создаем новый аррэй");
+		for(int i=0;i<lengthStudentList;i++){
+			
+		newStudentList[i]=new Student("_","_",0);	
+		System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"newStudentList["+i+"].city="+newStudentList[i].city+"newStudentList["+i+"].age="+newStudentList[i].age);
+	    }
+		
+		System.out.println("Copy");
+		
+		//копируем в новый массив старый исключая удаленного студента
+		
+		int i=0,j=0;
+		
+        while(i<--studentCounter){
+		
+         if(i!=deletedStudentNumber){
+				newStudentList[j].name=StudentList[i].name;
+				newStudentList[j].city=StudentList[i].city;
+				newStudentList[j].age=StudentList[i].age;
+			j++;
+			 
+		 }		
+			i++;
+			
+		}		
+		//выводим на экран массив без удаленного элемента
+		i=0;
+		while(i<studentCounter){
+			System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"   newStudentList["+i+"].city="+newStudentList[i].city+"   newStudentList["+i+"].age="+newStudentList[i].age);
+	    i++;
+			
+		}
+		
+	
+		
+		
+	}// end deleteStudentDirectly
+
+	
+	
+	
+	//////////////////DeleteStudent() ---- 
+	/*
+	вводим символ с клавиатуры и проверяем его если это чилос в нужном диапозоне 
+	если да то удаляем студента если нет то идем покругу... 
+	*/
+	public void DeleteStudent(){
+		int studentNumber;
+		Scanner scanStudentNumber = new Scanner(System.in);
+		ClearDisplay();
+		 System.out.println(" ---------------- Delete  Student ----------------- ");
+	     ShowStudentList();
+		 
+		 //---------------- проверяем если было введено число и если оно в правильном диапозоне
+		 while(true){
+			 System.out.print("Please select the student number you want to delete....:");
+			 System.out.println("Or press 'm' back to memu...");
+			 Scanner in = new Scanner(System.in);//cчитываем пункт меню в char проверяем если это число и если оно меньше длины нашего массмва
+                char PressedKey = in.next().charAt(0);
+				studentNumber = PressedKeyIsNumber(PressedKey);
+				
+				if (PressedKey=='m'){//если ввели m то выходим в меню
+					ShowMenu();	
+				}
+ 				
+				if(studentNumber!=-1){
+					System.out.println("PressedKey)!=-1");
+					 if((studentNumber>=0)&&(studentNumber<=studentCounter)){
+						 
+						 DeleteStudentDirectly(studentNumber);//удаляем студента и выводим новый список
+						 
+						 for(int i=0;i<studentCounter;i++){
+			               System.out.println(i+":"+StudentList[i].name+"|"+StudentList[i].city+"|"+StudentList[i].age+"|");
+					 
+		                   }
+					 }
+					 else
+					 {
+						 System.out.println("Enter correct student Number from 0 to"+studentCounter+" or 'm' for exit too main menu...:");
+						 continue;
+					 }
+				 }
+				 else
+				 {
+					//если  PressedKey =-1 значит это не число и нужно попробовать еще раз или выйти в меню
+					 System.out.println("Error! You entered symbol but not digit. Please enter integer from 0 to "+studentCounter+" or 'm' to exit to main menu...:");
+					 continue;
+				 }					 
+				 
+				 }
+}
+        
+
+	
+	//////////////// 
  public void AddNewStudent(){
 	
       Scanner scanName = new Scanner(System.in);
@@ -126,7 +245,7 @@ public class Student{
 
 	 }
          case 2:{
-           System.out.println("  Delete Student");
+           DeleteStudent();
            break;
     
 	 }
