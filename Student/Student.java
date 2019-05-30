@@ -72,47 +72,50 @@ int PressedKeyIsNumber(char PressedKey){
 	
     /////////////////delete directly
 	void DeleteStudentDirectly(int deletedStudentNumber){
+		Student[] newStudentList=new Student[lengthStudentList];//выделяем память для массива в котором будем сохронять новый список студентов
 		
 		System.out.println("Executed DeleteStudentDirectly");
 		System.out.println("deletedStudentNumber:"+deletedStudentNumber);
 		
-		Student[] newStudentList=new Student[lengthStudentList];//выделяем память для массива в котором будем сохронять новый список студентов
 		//создали новый массив 
-		System.out.println("Создаем новый аррэй");
-		for(int i=0;i<lengthStudentList;i++){
-			
-		newStudentList[i]=new Student("_","_",0);	
-		System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"newStudentList["+i+"].city="+newStudentList[i].city+"newStudentList["+i+"].age="+newStudentList[i].age);
-	    }
+		System.out.println("Creation for newStudentList... ");
+			for(int i=0;i<lengthStudentList;i++){
+				newStudentList[i]=new Student("_","_",0);	
+				System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"newStudentList["+i+"].city="+newStudentList[i].city+"newStudentList["+i+"].age="+newStudentList[i].age);
+			}
+			System.out.println("Copy  StudentList to newStudentList ");		//копируем в новый массив старый исключая удаленного студента
 		
-		System.out.println("Copy");
 		
-		//копируем в новый массив старый исключая удаленного студента
 		
-		int i=0,j=0;
-		
-        while(i<--studentCounter){
+       for(int i=0, j=0;i<=studentCounter;i++){
 		
          if(i!=deletedStudentNumber){
 				newStudentList[j].name=StudentList[i].name;
 				newStudentList[j].city=StudentList[i].city;
 				newStudentList[j].age=StudentList[i].age;
-			j++;
-			 
+			 j++;
 		 }		
+			
+			System.out.println("newStudentList["+j+"].name="+newStudentList[j].name+"   newStudentList["+j+"].city="+newStudentList[j].city+"   newStudentList["+j+"].age="+newStudentList[j].age);
+	   
+		}		
+		
+		
+		
+		//копируем обратно уже без удаленного элемента
+		/* i=0;
+		
+        while(i<=studentCounter){
+		
+ 				newStudentList[i].name=StudentList[i].name;
+				newStudentList[i].city=StudentList[i].city;
+				newStudentList[i].age=StudentList[i].age;
+					
 			i++;
 			
-		}		
-		//выводим на экран массив без удаленного элемента
-		i=0;
-		while(i<studentCounter){
-			System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"   newStudentList["+i+"].city="+newStudentList[i].city+"   newStudentList["+i+"].age="+newStudentList[i].age);
-	    i++;
-			
-		}
-		
+		}	*/
 	
-		
+		ShowStudentList();
 		
 	}// end deleteStudentDirectly
 
