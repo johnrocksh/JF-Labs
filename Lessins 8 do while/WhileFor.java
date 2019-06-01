@@ -45,6 +45,16 @@ class WhileFor{
 		counter++;
 		
 	}while(counter<=40);
+	
+	
+	
+	
+	String str="";
+	for(int i=0;i<5;i++){
+		str+="*";
+	System.out.println("'"+str+"'");	
+		
 	}
 	
+}
 }
