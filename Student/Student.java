@@ -1,7 +1,12 @@
 import java.util.Scanner;//подключаем для ввода данных с консоли
 import java.io.IOException;//для очистки экрана
 
+/**
+Класс Student это демонстрация работы с массивами строк в java 
+класс осуществляет удаление добавление редактирование и поиск студентов в массив 
+можно добавить нового студента можно его удалить или просто просмотреть список всех студентов... 
 
+*/
 public class Student{
 
        public  String name;
@@ -11,9 +16,7 @@ public class Student{
 	 int lengthStudentList=5;	
 	 static byte studentCounter=0;
 	 Student[] StudentList=new Student[lengthStudentList];
-	
-		
-  	  
+	  
 	 public Student(){}
      public Student(String name,String city,int age){
    
@@ -21,7 +24,6 @@ public class Student{
 		this.city=city;
 		this.age=age;
 }
-	
 
 //////////////PressEnyKey  -- ожидаем нажатие любой клавиши от пользователя
   public void PressEnyKey(){
@@ -78,44 +80,35 @@ int PressedKeyIsNumber(char PressedKey){
 		System.out.println("deletedStudentNumber:"+deletedStudentNumber);
 		
 		//создали новый массив 
-		System.out.println("Creation for newStudentList... ");
+		System.out.println("Creation  newStudentList... ");
+		System.out.println("---------------------------");
 			for(int i=0;i<lengthStudentList;i++){
 				newStudentList[i]=new Student("_","_",0);	
-				System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"newStudentList["+i+"].city="+newStudentList[i].city+"newStudentList["+i+"].age="+newStudentList[i].age);
+				//System.out.println("newStudentList["+i+"].name="+newStudentList[i].name+"  newStudentList["+i+"].city="+newStudentList[i].city+"  newStudentList["+i+"].age="+newStudentList[i].age);
 			}
-			System.out.println("Copy  StudentList to newStudentList ");		//копируем в новый массив старый исключая удаленного студента
+		System.out.println("---------------------------");
 		
-		
-		
-       for(int i=0, j=0;i<=studentCounter;i++){
-		
-         if(i!=deletedStudentNumber){
-				newStudentList[j].name=StudentList[i].name;
-				newStudentList[j].city=StudentList[i].city;
-				newStudentList[j].age=StudentList[i].age;
-			 j++;
-		 }		
+			for(int i=0,j=0;i<studentCounter;i++){
+			if(i==deletedStudentNumber){
+				continue;
+			}
+			else{
+			newStudentList[j]=StudentList[i];	
+			j++	;
+			}
+            }
 			
-			System.out.println("newStudentList["+j+"].name="+newStudentList[j].name+"   newStudentList["+j+"].city="+newStudentList[j].city+"   newStudentList["+j+"].age="+newStudentList[j].age);
-	   
-		}		
+		System.out.println("");
+		System.out.println("---------------------------");
 		
+		//for(int и=0;и<studentCounter;и++){
 		
+		//System.out.println("newStudentList["+и+"].name="+newStudentList[и].name+"  newStudentList["+и+"].city="+newStudentList[и].city+"  newStudentList["+и+"].age="+newStudentList[и].age);
 		
-		//копируем обратно уже без удаленного элемента
-		/* i=0;
+		//}
 		
-        while(i<=studentCounter){
-		
- 				newStudentList[i].name=StudentList[i].name;
-				newStudentList[i].city=StudentList[i].city;
-				newStudentList[i].age=StudentList[i].age;
-					
-			i++;
-			
-		}	*/
-	
-		ShowStudentList();
+		studentCounter--;	
+		StudentList=newStudentList;
 		
 	}// end deleteStudentDirectly
 
