@@ -193,15 +193,149 @@ class Router{
 	
 }
 
+//11  AlarmClock
 
+class AlarmClock {
+	private String date;
+	private String time;
+	private boolean repeat;
+	
+	void SetAlarm(){}
+	void ResetAlarm(){}
+	void AddNewAlarm(){}
+	
+}
 
+//12 Apteka
 
-
-
-
-
+class Apteka{
+	
+private	int ammoutnOfMedicine;
+private    double soldForSum;
+private	double profit;
+	
+void ToSell(String nameOfMedicine,int count,double price){}
+void ToBY(String nameOfMedicine,int count,double price){}
+double ProfitCalc(){return profit;}
 	
 	
+}
+
+
+//13 notepad
+
+class Notepad{
+	
+	String fileName;
+	String folderName;
+	String path;
+	
+	void CreateNewFile(){}
+	void OpenFile(){}
+	void SaveFile(){}
+	
+}
+
+//14 simuliator
+
+class Simuliator{
+	
+	String name;
+	int Skin;
+	String sex;
+	
+	
+	void GoStraight(){}
+	void GoLeft(){}
+	void GoRight(){}
+	void Back(){}
+	
+	
+}
+
+//15  class 
+
+class Webmoney{
+	
+	double balance;
+	String name;
+	String password;
+	
+	void ShowBalance(){}
+	void PutMoney(){}
+	void ToBuySomething(){}
+	
+}
+
+
+//  16 class PCOff
+
+
+class Vicliucatel{
+	String time;
+	boolean OnOff;
+	
+	void SetTime(){}
+	void VicliucatelOn(){}
+	void VicliucatelOf(){}
+	
+}
+
+
+// 17 class cikirikitanga
+
+class cikirikitanga{
+	int shtanga1;
+	int shtanga2;
+	int shtanga3;
+	
+	void CineRupeShtanga1(){}
+	void CineRupeShtanga2(){}
+	void CineRupeShtanga3(){}
+	
+}
+
+//18 class school
+class school {
+ int countOfpupil ;
+ int boys;
+ int girls;
+ 
+ void AddPupil(){}
+ void DelPupil(){}
+ void EditPupil(){}
+	
+	
+}
+
+//19 day
+
+class Day{
+	
+boolean morning;
+boolean dinner;
+boolean evening;
+
+void SetMorning(){}
+void SetDinner(){}
+void SetEvening(){}
+	
+	
+}
+
+//20 weather
+class Weather{
+	boolean clear;
+	boolean cloudy;
+	boolean rain;
+	
+	void  SetCountry(){};
+	void  SetCity(){}
+	void  GetWeather(){};
+	
+}
+
+
 
 
 
