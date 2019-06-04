@@ -10,67 +10,45 @@ class LearningSwitch{
 				while(true){
 					
 					System.out.println("Please enter the character From A to Z:");
-					System.out.println("Enter 'Q' to Exit.");
+					System.out.println("Enter '1' to Exit.");
 					
 				consanaSauVocala=sc.next().charAt(0);
+				char ch = Character.toUpperCase(consanaSauVocala);
 				
 				
-				switch(consanaSauVocala){
+				
+				switch(ch){
 					
 					case ('A'):
 					System.out.println("A:vocala");
 					break;
-					
-					case ('B'):
-					System.out.println("B:consala");
-					break;
-					
-					case ('C'):
-					System.out.println("C:consala");
-					break;
-					
-					case ('D'):
-					System.out.println("D:consala");
-					break;
-					
+										
 					case ('E'):
 					System.out.println("E:vocala");
-					break;
-					
-					case ('F'):
-					System.out.println("F:consala");
-					break;
-					
-					case ('J'):
-					System.out.println("J:consala");
-					break;
-					
-					case ('H'):
-					System.out.println("H:consala");
-					break;
-					case ('K'):
-					System.out.println("K: consala");
-					break;
-					case ('L'):
-					System.out.println("L:consala");
-					
-					case ('M'):
-					System.out.println("M:consala");
-					break;
-					
-					case ('N'):
-					System.out.println("N:consala");
 					break;
 					
 					case ('O'):
 					System.out.println("O:vocala");
 					break;
+										
+					case ('U'):
+					System.out.println("U:vocala");
+					break;
+						
+					case ('Y'):
+					System.out.println("Y:vocala");
+					break;
 					
-					case ('Q'):
+					case ('I'):
+					System.out.println("I:vocala");
+					break;
+					
+							
+					case (49):
 					System.exit(0);
 					
 					default:
-					System.out.println("Worning! Please try again....");
+					System.out.println(ch+":consala");
 					
 				}
 					
